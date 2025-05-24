@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{authblk}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{amssymb}
+
+
+\title{Linear Epistemic Systems}
+\date{May 2025}
+
+\begin{document}
+
+    \maketitle
+
+    \begin{abstract}
+        We introduce a formal framework for modeling knowledge representation in linear epistemic systems, with reference to artificial systems such as large language models (LLMs). Concepts are modeled as symbolic vectors in $\mathbb{K}^n$, and knowledge as their image under a linear epistemic transformation. We define semantic equivalence classes and explore the limits of knowledge discovery within a closed system. Our findings suggest that, without external intervention, such systems are inherently constrained and discovery is finite. We also outline a nonlinear and topological extension to represent emergent knowledge.
+    \end{abstract}
+
+    \section{Introduction}
+
+    The rapid development of artificial intelligence and deep learning has renewed interest in understanding how systems acquire and represent knowledge. This little docs, behind the idea, introduces a formal model for reasoning about epistemic limitations in systems that operate with fixed internal representations.
+
+    We define a knowledge system as a linear transformation over a semantic vector space and investigate the implications for discovery, creativity, and semantic expansion. We show that closed systems are subject to conceptual saturation, and connect our results to foundational limitations in logic and computation.
+
+    \section{Linear Epistemic Space}
+
+    Let $\mathbb{K}^n$ be a vector space of symbolic knowledge. Define:
+
+    \begin{itemize}[noitemsep]
+        \item $V \subseteq \mathbb{K}^n$: the subspace of semantically valid inputs (``semantic domain''),
+        \item $W \subseteq \mathbb{K}^n$: the subspace of representable knowledge,
+        \item $f : V \to W$: the epistemic function, represented as a linear map $f(v) = Av$, with $A \in \mathbb{R}^{k \times k}$.
+    \end{itemize}
+
+    Assume $\dim(V) = \dim(W) = k$, and $\operatorname{rank}(A) = k$. Then $f$ is injective and invertible.
+
+    \section{Semantic Equivalence}
+
+    We define a semantic equivalence relation:
+
+    \[
+        v_1 \sim v_2 \iff f(v_1) = f(v_2)
+    \]
+
+    This induces a quotient space $V/\!\sim$, where each class $[v]$ corresponds to a unique concept in $W$.
+
+    \[
+        \tilde{f}: V/\!\sim \to W
+    \]
+
+    \textbf{Well-definedness}: $f$ being injective ensures that every class maps to exactly one concept.
+
+    \section{Epistemic Combination and Activation}
+
+    Each concept $y \in W$ is a linear combination:
+
+    \[
+        y = x_1 A_1 + \cdots + x_k A_k = A x
+    \]
+
+    Activation is modeled as $\sigma(f(v))$, where $\sigma$ is a nonlinear function (e.g., sigmoid), enabling concept salience.
+
+    \section{Discovery and Expansion}
+
+    New vectors $v' \notin V$ cannot be represented unless an agent expands the domain:
+
+    \[
+        f : V \to W \quad \leadsto \quad f' : V' \to W'
+    \]
+
+    \textbf{Conclusion}: \emph{Discovery is impossible without external expansion.}
+
+    \section{Topological Generalization}
+
+    To model semantic emergence, define a topology $\tau$ on $V$:
+
+    \begin{itemize}[noitemsep]
+        \item Open sets: semantic categories
+        \item Limit points: emergent or border concepts
+        \item Closure: semantic saturation
+    \end{itemize}
+
+    We extend the linear model into a continuous epistemic space via the sigmoid activation:
+
+    \[
+        \sigma: Av \mapsto (0,1)^k
+    \]
+
+    This allows for a natural metric and topological structure over the activated space.
+
+    \section{Analogies supposed near this vision}
+
+    Our findings echo fundamental limits:
+
+    \begin{itemize}[noitemsep]
+        \item \textbf No system can internally prove all truths expressible within its language.
+        \item \textbf{Our model}: There exist concepts that are unreachable within the epistemic closure.
+    \end{itemize}
+
+    The epistemic matrix $A$ bounds all internal discovery.
+
+    \section{Computational Simulation and Results}
+
+    We implemented a model in Python to simulate activation, semantic equivalence, and epistemic expansion. Concepts such as ``3'' and ``III'' are shown to collapse into the same activation class under sigmoid, while new concepts (e.g., ``6'' as 3+3) are only recognized when the epistemic matrix is expanded.
+
+    Epistemic error is defined as:
+
+    \[
+        \varepsilon = \left\| \sigma(f(v_{\text{expected}})) - \sigma(f(v_{\text{generated}})) \right\|
+    \]
+
+    Visualizations confirm:
+
+    \begin{itemize}[noitemsep]
+        \item Semantic equivalence: low error between different vectors mapped to same concept
+        \item Saturation: internal composition fails to create new concepts
+        \item Expansion: new matrix $A + K$ allows concept emergence
+    \end{itemize}
+
+    \section{Eigenvectors, Optimization, and the Case of AlphaGo}
+
+    Within a closed epistemic system, not all responses that appear surprising constitute true discovery. We introduce the notion of \textit{epistemic eigenvectors}:
+
+    \[
+        A v = \lambda v
+    \]
+
+    Such vectors represent stable, self-reinforcing knowledge configurations. Optimizing internal policies often leads to reinforcing these eigen-directions without semantic expansion.
+
+    A prominent real-world example is AlphaGo's famous Move 37. Though initially perceived as creative, it was later revealed as the result of optimizing within the existing move-value landscape. That is, Move 37 was an \textit{epistemic eigenvector} of the value function learned by the network. It appeared novel only because it exploited underexplored directions in the closed strategic space.
+
+    This supports our thesis: systems can exhibit novelty-like behavior via internal maximization, but \textbf{true discovery} requires expanding beyond the current epistemic frame.
+
+    \section{Conclusion}
+
+    Linear epistemic systems are structurally closed. True conceptual expansion requires external vector injection or transformation beyond the original space.
+    So the concept of chunking the information into a fine grain, as a symbol representation of the rules that we want to describe, are not opened to auto implement.
+    We should introduce the rules, the vision on the minimal concept on we can build, like a sum.
+    So closed system, I believe are extreme extensions for our brain and our optimization capacity, and what we already know can be push on its limits with the use of these tools.
+
+\end{document}

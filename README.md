@@ -17,8 +17,8 @@ Without changing the transformation matrix or expanding the vector space, **no g
 ## 📐 Linear Tools
 
 - **Concepts** are represented as vectors
-- **Knowledge** is represented via a linear transformation \( f(v) = Av \)
-- **Activation** is modeled by sigmoid \( \sigma(Av) \) for bounded semantic intensity
+- **Knowledge** is represented via a linear transformation `f(v) = Av`
+- **Activation** is modeled by sigmoid `σ(Av)` for bounded semantic intensity
 - **Discovery** is interpreted as the ability to distinguish new semantic vectors
 
 ## 🧠 Semantic Equivalence
